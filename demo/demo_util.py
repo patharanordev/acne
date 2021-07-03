@@ -2,7 +2,7 @@ import cv2
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-# from scipy.misc import imresize
+from scipy.misc import imresize
 
 from utils import compute_T_with_imagesize
 
@@ -31,7 +31,7 @@ def extract_corrs(img1, img2, bi_check=True, numkp=2000):
     return corrs
 
 
-def visualize_corrs(img1, img2, corrs, mask=None):
+def visualize_corrs(figname, img1, img2, corrs, mask=None):
     if mask is None:
         mask = np.ones(len(corrs)).astype(bool)
  
@@ -104,7 +104,8 @@ def visualize_corrs(img1, img2, corrs, mask=None):
     fig.axes.get_yaxis().set_visible(False)
     ax = plt.gca()
     ax.set_axis_off()
-    plt.show()
+    # plt.show()
+    plt.savefig(figname)
 
 
 def get_T_from_K(K):

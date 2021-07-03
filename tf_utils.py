@@ -1,6 +1,9 @@
 # Filename: tf_utils.py
 # License: LICENSES/LICENSE_APACHE
-import tensorflow as tf
+
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 def pre_x_in(x_in, opt="4"):
     """

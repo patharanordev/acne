@@ -38,7 +38,8 @@ ax1.set_axis_off()
 ax2.imshow(img2)
 ax2.set_title('Image2')
 ax2.set_axis_off()
-plt.show()
+# plt.show()
+plt.savefig('ref-img.png')
 
 
 # Generate Putative Correspondences, i.e., the input of CNe/ACNe
@@ -181,13 +182,13 @@ w_com = w_com[0]
 mask_local = score_local > 0
 print("num inlier defined by score for local attention: {}".format(
     np.sum(mask_local)))
-visualize_corrs(img1, img2, corrs, mask_local)
+visualize_corrs('score-local-attention.png', img1, img2, corrs, mask_local)
 
 # Inlier defined by combined weights
 mask_com = w_com > 1e-5 # E: 1e-7, F: 1e-5 for OANet dataset which uses 2k SIFT.
 print("num inlier defined by combined weights: {}".format(
     np.sum(mask_com)))
-visualize_corrs(img1, img2, corrs, mask_com)
+visualize_corrs('combined-weight.png', img1, img2, corrs, mask_com)
 
 
 

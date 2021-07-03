@@ -7,7 +7,7 @@ import sys
 import time
 
 import numpy as np
-from parse import parse
+from urllib import parse
 import getpass
 
 import cv2

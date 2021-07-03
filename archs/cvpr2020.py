@@ -1,6 +1,9 @@
 # Filename: cvpr2020.py
 # License: LICENSES/LICENSE_UVIC_EPFL
-import tensorflow as tf
+
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 from ops import conv1d_layer, conv1d_resnet_block
 

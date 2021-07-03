@@ -3,10 +3,14 @@
 import numpy as np
 from tf_utils import gcn 
 
+
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 # From: https://github.com/shaohua0116/Group-Normalization-Tensorflow/blob/master/ops.py
 def norm(x, norm_type, is_train, G=32, esp=1e-5):
-    #
-    import tensorflow as tf
+    
     with tf.variable_scope('{}_norm'.format(norm_type)):
         if norm_type == 'none':
             output = x
@@ -45,8 +49,6 @@ def norm(x, norm_type, is_train, G=32, esp=1e-5):
     return output
 
 def tf_skew_symmetric(v):
-
-    import tensorflow as tf
 
     zero = tf.zeros_like(v[:, 0])
 
@@ -90,8 +92,6 @@ def bn_act(linout, perform_gcn, perform_bn, activation_fn, is_training,
 
 def get_W_b_conv1d(in_channel, out_channel, ksize, dtype=None):
 
-    import tensorflow as tf
-
     if dtype is None:
         dtype = tf.float32
 
@@ -115,8 +115,6 @@ def conv1d_layer(inputs, ksize, nchannel, activation_fn, perform_bn,
                  perform_gcn, is_training, config, perform_kron=False,
                  padding="CYCLIC", data_format="NCHW",
                  act_pos="post", weight=None):
-
-    import tensorflow as tf
 
     assert act_pos == "pre" or act_pos == "post"
 
@@ -211,8 +209,6 @@ def conv1d_layer(inputs, ksize, nchannel, activation_fn, perform_bn,
 def conv1d_resnet_block(inputs, ksize, nchannel, activation_fn, is_training, config,
                         midchannel=None, perform_bn=False, perform_gcn=False,
                         padding="CYCLIC", act_pos="post", data_format="NCHW", weight=None):
-
-    import tensorflow as tf
 
     # In case we want to do a bottleneck layer
     if midchannel is None:

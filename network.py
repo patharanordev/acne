@@ -4,8 +4,11 @@ import os
 import sys
 
 import numpy as np
-import tensorflow as tf
-from parse import parse
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
+from urllib import parse
 from tqdm import trange
 import pdb
 import itertools
@@ -423,7 +426,7 @@ class MyNetwork(object):
         """
 
         print("Initializing...")
-        self.sess.run(tf.global_variables_initializer())
+        self.sess.run(tf.compat.v1.variables_initializer())
         
         # ----------------------------------------
         # Resume data if it already exists
