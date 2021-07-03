@@ -2,7 +2,7 @@ import cv2
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.misc import imresize
+# from scipy.misc import imresize
 
 from utils import compute_T_with_imagesize
 
